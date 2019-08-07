@@ -1,0 +1,53 @@
+<h1>Type of Component Communication</h1>
+
+<nav>
+  <button (click)="toggleChild('first')">First Child</button>
+  <button (click)="toggleChild('second')">Second Child</button>
+</nav>
+
+<app-first-child *ngIf="showChild=='first'" [childMessage]="firstMsg"></app-first-child>
+
+<app-second-child *ngIf="showChild=='second'" (messageEvent)="receiveMessage($event)"></app-second-child>
+
+<br>
+
+<!--------------------- COMMUNICATION BETWEEN COMPONENTS -------------------------------------------------------------->
+-----------------------------------------------------------------------------------------------------------------------
+<div>
+<h2>Here we receive our child component's messages:</h2>
+<!-- 
+Pass data from parent to child with input binding
+-->
+<h3>Communication with Input Decorator: </h3>
+<h4>Send Message to first child: </h4>
+<input type = "text" id="inputBinding"/>
+<button (click)="sendFirstMsg()">Send</button>
+<br> 
+
+<!--
+Pass data from Child to Parent via ViewChild:
+
+ViewChild allows a one component to be injected into another, giving the parent access to its attributes and functions. However the child won’t be available until after the view has been initialized (after ngOnInit()). This means we need to implement the AfterViewInit lifecycle hook to receive the data from the child. 
+-->
+<h3>Communication with ViewChild Decorator:</h3>
+<p>Third Child Message: {{thirdMsg}}</p>
+<app-third-child></app-third-child>
+
+<!--
+Pass data from Child to Parent via Output() and EventEmitter
+
+Another way to share data is to emit data from the child to parent. This method can be used when you want to share data changes that occur on things like button clicks, form entires, and other user events.
+-->
+<h3>Communication with Output and EventEmitter:</h3>
+<p>Second Child Message: {{secondMsg}}</p>
+    
+<!--
+Communication via service.
+This method can be used when a component's state is controlled, or it is asked from multiple instances.
+-->
+<h3>Parent Service Communication:</h3>
+<p>Current Message: {{serviceMsg}}</p>
+    
+</div>
+
+<!--------------------------------------------------------------------------------------------------------------------->

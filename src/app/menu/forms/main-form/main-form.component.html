@@ -1,0 +1,12 @@
+<!--------------------------- FORM EXAMPLES-------------------------------------------------------------------------->
+<h1>Type of Forms</h1>
+
+<nav>
+  <button (click)="toggleForm('reactive')">Reactive Form</button>
+  <button (click)="toggleForm('template-driven')">Template Driven Form</button>
+</nav>
+
+<app-reactive *ngIf="showForm=='reactive'"></app-reactive>
+
+<app-template-driven *ngIf="showForm=='template-driven'"></app-template-driven>
+

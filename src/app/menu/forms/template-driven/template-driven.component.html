@@ -1,0 +1,83 @@
+
+<h3>Template Driven Forms</h3>
+    <form (ngSubmit)="onSubmit()" #myTemplateForm="ngForm">
+        <!--
+            Each input element has an id property that is used by the label element's for attribute to match the label to its input control.
+
+            Each input element has a name property that is required by Angular forms to register the control with the form.
+
+            #firstname ="ngModel" allows us to have access on ngModel directive of the respective input/ creates a template reference
+
+            [(ngModel)] is example of 2-way binding.
+
+            form-group / form-control are bootstrap classes for css styling.
+
+        -->
+        <div class="form-group">
+            <div>
+             <label for="firstName">First Name: </label>
+             <input type="text" class="form-control" id="firstName" 
+                 required appLengthValidator="10" appRegexValidator="^[a-zA-Z\u0386-\u03CE\.\, ]{1,100}$"
+                 [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                <div *ngIf="firstName.errors.required" class="custom-error">
+                    First name is required.
+                </div>
+                <div *ngIf="firstName.errors.invalidLength" class="custom-error">
+                    First name must be contain 10 characters max.
+                </div>
+                <div *ngIf="firstName.errors.invalidRegEx" class="custom-error">
+                    First name cannot contain numbers or special characters.
+                </div>
+            </div>    
+            </div>    
+            
+            <div>
+                <label for="lastName">Last Name: </label>
+                <input type="text" class="form-control" id="lastName" 
+                    required appLengthValidator="10" appRegexValidator="^[a-zA-Z\u0386-\u03CE\.\, ]{1,100}$"
+                    [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    <div *ngIf="lastName.errors.required" class="custom-error">
+                        Last name is required.
+                    </div>
+                    <div *ngIf="lastName.errors.invalidLength" class="custom-error">
+                        Last name must be contain 10 characters max.
+                    </div>
+                    <div *ngIf="lastName.errors.invalidRegEx" class="custom-error">
+                        Last name cannot contain numbers or special characters.
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+
+        <div class="form-group">
+          <h3>Address</h3>
+            
+          <label for="street">Street: </label>
+          <input type="text"  class="form-control" id="street"
+                 [(ngModel)]="model.address.street" name="street">
+            
+            <label for="city">City: </label>
+          <input type="text"  class="form-control" id="city"
+                 [(ngModel)]="model.address.city" name="city">
+            
+            <label for="state">State: </label>
+          <input type="text"  class="form-control" id="state"
+                 [(ngModel)]="model.address.state" name="state">
+        </div>
+
+        <button type="submit" [disabled]="!myTemplateForm.form.valid">Submit</button>
+
+    </form>
+
+<p>
+  Form Value: {{ myTemplateForm.value | json }} <!-- Interpolation -->
+</p>
+
+
+<p>
+  Form Status: {{ myTemplateForm.status }}
+</p>
+

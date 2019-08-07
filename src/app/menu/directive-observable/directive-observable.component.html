@@ -1,0 +1,83 @@
+<!--------------------------------- DIRECTIVES -------------------------------------------------------------->
+<!-- 
+Directives are inserted into template's html.
+There are 2 categories of Angular directives:
+- Attribute Directives that change the appearance or behavior of a DOM element.
+- Structural directives that change the DOM layout by adding and removing DOM elements.
+- There are also component directives (with template) for the creation of components 9not included here).
+-->
+
+<!-- 
+Examples of structural directive: 
+*ngFor
+*ngIf -> they add (or remove) view elements based on conditions 
+
+Note: When *ngIf condition is false, Angular removes the DOM element completely.
+If we use ngShow or hide, view element stays in DOM but it is either visible or not
+based on the condition.
+-->
+<h2>Directive</h2>
+<h3>Structural Directive Example: </h3>
+<div *ngIf="showSecret">
+    <p>This is a secret!</p>
+</div>
+<button (click)="showSecret=!showSecret">Secret Surprise!</button>
+
+<!--
+Example of attribute directive
+-->
+<h3>Attribute Directive Example: </h3>
+<h4>Pick a highlight color</h4>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+  <input type="radio" name="colors" (click)="color=''">Default
+</div>
+<p [appHighlight]="color">Highlight me!</p>
+
+
+
+
+<!--------------------------------- OBSERVABLES --------------------------------------------------------------->
+<h2>Observables</h2>
+
+<!--
+Pipes in general receive a value and transform into a value with different format. 
+Example: {{myText | uppercase}} => Uppercase pipe transforms myText to a string with capital letters.
+The async pipe subscribes to an Observable or Promise and returns the latest value it has emitted.
+When a new value is emitted, the async pipe marks the component to be checked for changes. 
+When the component gets destroyed, the async pipe unsubscribes automatically to avoid potential memory leaks.
+-->
+
+<h3>List of People V1:</h3>
+<ul class="people">
+  <li *ngFor="let person of people1$| async"
+    [class.selected]="person === selectedPerson"
+    (click)="onSelect(person)">
+    <span class="name">{{person.firstName}}</span> {{person.lastName}}
+  </li>
+</ul>
+
+<h3>List of People V2:</h3>
+<ul class="people">
+  <li *ngFor="let person of people2"
+    [class.selected]="person === selectedPerson"
+    (click)="onSelect(person)">
+    <span class="name">{{person.firstName}}</span> {{person.lastName}}
+  </li>
+</ul>
+
+<div *ngIf="selectedPerson">
+
+  <h3>{{selectedPerson?.firstName | uppercase}} {{selectedPerson?.lastName | uppercase}}:</h3>
+  <div>
+      <span>Street: {{selectedPerson.address.street}}</span><br>
+      <span>City: {{selectedPerson.address.city}}</span><br>
+      <span>State: {{selectedPerson.address.state}}</span><br>
+    <!--label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+    </label-->
+  </div>
+
+</div>

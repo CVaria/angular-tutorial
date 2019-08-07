@@ -1,0 +1,92 @@
+
+<!--A reactive form example -->
+<h3> Reactive Form Example </h3>
+<form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+
+  	<!--
+	A form group contains a group of controls.
+	A form group tracks the status and changes for each of its controls, so if one of the controls changes, 
+	the parent control also emits a new status or value change. 
+	-->
+
+	<!-- 
+	[formGroup]= "myReactiveForm" binds form element "myReactiveForm" with the FormGroup directive, creating a communication layer
+  between the model and the form. The FormControlName directive binds each input to the form control defined in FormGroup creating a 		
+  communication between form controls and their respective elements. 
+	-->
+    <div>
+        <label> First Name:</label>
+        <input type="text" formControlName="firstName">
+    
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        <div *ngIf="firstName.errors.required" class="custom-error">
+            First name is required.
+        </div>
+        <div *ngIf="firstName.errors.invalidLength" class="custom-error">
+            First name must be contain 10 characters max.
+        </div>
+        <div *ngIf="firstName.errors.invalidRegEx" class="custom-error">
+            First name cannot contain numbers or special characters.
+        </div>
+      </div>    
+    </div>
+  
+
+    <div>
+        <label> Last Name:</label>
+        <input type="text" formControlName="lastName">
+      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+        <div *ngIf="lastName.errors.required" class="custom-error">
+            Last name is required.
+        </div>
+        <div *ngIf="lastName.errors.invalidLength" class="custom-error">
+            Last name must be contain 10 characters max.
+        </div>
+        <div *ngIf="lastName.errors.invalidRegEx" class="custom-error">
+            Last name cannot contain numbers or special characters.
+        </div>
+      </div> 
+    
+    </div>
+ 
+   
+  <!-- A form can contain nested form groups-->
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <div>
+        <label>Street:</label>
+        <input type="text" formControlName="street">
+    </div>
+   
+    <div>
+        <label>City:</label>
+        <input type="text" formControlName="city">
+    </div>
+
+    <div>
+        <label>State:</label>
+            <input type="text" formControlName="state">
+    </div>  
+      
+  </div>
+
+  <!-- Before submitting, we can check if status of form is valid-->
+  <button type="submit" [disabled]="!myReactiveForm.valid">Submit</button>
+</form>
+
+<hr>
+
+<p>
+  Form Value: {{ myReactiveForm.value | json }} <!-- Interpolation -->
+</p>
+
+
+<p>
+  Form Status: {{ myReactiveForm.status }}
+</p>
+
+<p>
+  <button (click)="updateForm()">Update Form</button>
+</p>
+

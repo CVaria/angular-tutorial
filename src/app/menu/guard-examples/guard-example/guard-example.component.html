@@ -1,0 +1,20 @@
+<!--
+Guards in Angular allow to grant or remove access to certain parts of the navigation. 
+In addition, there is the CanDeactivate guard which allows us to prevent a user from accidentally leaving a component with unsaved changes.
+
+There are 4 types of routing guards available:
+
+    - CanActivate: Controls if a route can be activated.
+    - CanActivateChild: Controls if children of a route can be activated.
+    - CanLoad: Controls if a route can even be loaded (used for lazy loaded modules: if the guard returns false, they will not load).
+    - CanDeactivate: Controls if the user can leave a route. Note that this guard doesn’t prevent the user from closing the browser tab or navigating to a different address. It only prevents actions from within the application itself.
+-->
+
+<h3>Example of CanActivate Guard:</h3>
+<div>
+<h4>Set password to gain access: </h4>
+<input type = "text" [(ngModel)]="password"/>
+<button (click)="checkPassword()">Go to Secret Page</button>
+<br> 
+</div>
+

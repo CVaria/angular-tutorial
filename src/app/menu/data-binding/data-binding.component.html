@@ -1,0 +1,37 @@
+<!------------------ DATA BINDING -------------------------------------------------------------------------------->
+<h2>Data Binding Examples</h2>
+<div>
+<!--
+In string interpolation Angular replaces that name with the string value of the corresponding component property.
+Usage of curly brackets {{}}
+-->
+<h3>String Interpolation: </h3>
+<p>{{myString}}</p>    
+<!--
+Property Binding allows us to bind the view of the template expression. We update the value of a certain variable in component (model) and displaying it in view (presentation layer).
+Difference with interpolation:
+    Property Binding: used when setting an element property to a non-string data value.
+    Interpolation: used when setting an element property to a string value.
+-->
+    
+<h3>Property Binding: </h3>
+<p><img [src]='myImgPath'/></p>
+<!--
+Event binding is defined as the updating/sending of the value/information of a certain variable from the presentation layer (view) to the component (model).
+-->
+<h3>Event Binding: </h3>
+<h4>{{myTitle}}</h4>
+<button (click)="changeMyTitle()">Title is changed on click of this button.</button>
+<!--
+Two-way data binding is a combination of Property and Event binding. We continuously synchronize data from view to the component and component to the view, i.e. changes made in the component's data should sync to the view and should immediately update the model into the corresponding component with view data.
+
+Two-way data binding is mainly used in data entry forms where the user changes the view and makes changes in the model with the view data and vice-versa. To achieve this we use directive ngModel.
+
+NgModel is not a part of Angular's code library, it is defined in the forms module library (import the FormsModule when needed).
+-->
+<h3>Two-way Binding: </h3>
+<h4>Learning Two-Way DataBinding</h4>
+<input type = "text" [(ngModel)]="myUsername"/>
+<br>
+<h5>Welcome: {{myUsername}}</h5>
+</div>
