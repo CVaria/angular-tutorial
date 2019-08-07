@@ -1,6 +1,37 @@
-A small tutorial demonstrating basic feautures/structure of an Angular Project. 
-
 # TutorialApp
+
+A small tutorial demonstrating basic feautures/structure of an Angular Project. 
+The tutorial includes information/simple examples of:
+- services
+- guards
+- directives
+- data binding
+- observables
+- communication between components
+- validators
+- forms (reactive and template driven)
+- routing
+
+Purpose of the tutorial is to summarise basic theory of angular into a practical coding example (It may be helpful
+if the reader is familiar with main angular concepts).
+
+Useful Links for studying
+
+General Tutorials (including setup):
+--->(Fundamentals and Heroes App Hands-on Tutorial)
+https://angular.io/docs
+---->(Secondary/Backup Info)
+https://www.tutorialspoint.com/angular4/index.htm
+
+Angular Material (Theme Related Info);
+---->Installation
+https://material.angular.io/guide/getting-started
+---> Basic Tutorial on Material Components
+https://medium.com/codingthesmartway-com-blog/angular-material-and-angular-6-material-design-for-angular-6b1a3ee476f0
+
+Great Step-by-Step Tutorials on:
+https://malcoded.com/  Medium.com and Dzone.com
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
