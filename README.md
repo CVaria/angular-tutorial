@@ -1,3 +1,5 @@
+A small tutorial demonstrating basic feautures/structure of an Angular Project. 
+
 # TutorialApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
