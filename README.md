@@ -15,6 +15,8 @@ The tutorial includes information/simple examples of:
 Purpose of the tutorial is to summarise basic theory of angular into a practical coding example (It may be helpful
 if the reader is familiar with main angular concepts).
 
+npm install is needed in order to have node_modules folder created.
+
 Useful Links for studying
 
 General Tutorials (including setup):
